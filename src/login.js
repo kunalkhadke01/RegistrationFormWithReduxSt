@@ -1,13 +1,15 @@
-import './login.css';
+// import './login.css';
 import { useForm } from "react-hook-form";
-
-
-import { useSelector } from 'react-redux';
-function Login() {
+import { useSelector,useDispatch } from 'react-redux';
+import {setUser} from './Redux/action'
+const Login= (props) =>  {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const formData=useSelector()
-  console.log(formData)
+  const dispatch = useDispatch()
+  const onSubmit = (data) => {
+    dispatch(setUser(data))
+  };
+  const formData=useSelector(state=>console.log(state.currentUser))
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>

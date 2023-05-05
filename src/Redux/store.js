@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-// import user from './reducer';
+import currentUser from './reducer';
 
 const allData = combineReducers({
-    usersList: {}
+    currentUser
 })
 
 export default allData;
