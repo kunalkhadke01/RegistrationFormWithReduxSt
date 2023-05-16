@@ -24,7 +24,7 @@ const SetUser = (navigate, userObj) => {
       .then(function (response) {
         console.log(response.data);
                   if(response.data.access_token) {
-                    localStorage.setItem("Token", response.data.access_token)
+                    localStorage.setItem("Token", response.data)
                     navigate("/welcome")
                   } else{
                     window.location.replace("/")

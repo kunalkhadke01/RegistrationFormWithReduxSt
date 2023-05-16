@@ -14,7 +14,7 @@ const navigate = useNavigate();
           method: 'get',
             url: 'https://lokmanya-dev-api.kiplglobal.com/auth/login-auth-legacy',
             headers: { 
-              'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${token.access_token}`
             }
           };
         
@@ -22,18 +22,22 @@ axios(config)
 .then(function (response) {
     console.log(JSON.stringify(response.data));
     setStatusres(response.data)
-    if(response.data !== "success"){
-      navigate("/")
-    }
+
   })
   .catch(function (error) {
     console.log(error);
+    setTimeout(()=>{
+      if(error.response.status == 401){
+        navigate("/")
+      }
+    }, 3000)
+
   });
     },[])
 console.log("statusres,", statusres)
     return(
         <div>
-          {statusres == "success" ?  <Header text="Welcome"/> : ""}  
+          {statusres == "success" ?  <Header text={token.user.owner_name}/> : ""}  
         </div>
     )
 }
