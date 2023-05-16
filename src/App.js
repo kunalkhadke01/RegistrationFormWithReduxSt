@@ -1,6 +1,7 @@
 import './login.css';
 import Login from './login';
 import Register from './register'
+import Welcome from './welcome';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import allData from './Redux/store'
 import { createStore } from 'redux'
@@ -13,6 +14,7 @@ function App(props) {
     <Routes>
     <Route exact path="/" element={<Login />} />
     <Route path="/registration" element={<Register />} />
+    <Route path="/welcome" element={<Welcome />} />
     </Routes>
     </BrowserRouter>
      </Provider>

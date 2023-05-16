@@ -1,21 +1,21 @@
 import './login.css';
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from 'react-redux';
-import {setUser} from './Redux/action'
+import {SetUser} from './Redux/action'
 import Header from './Component/header'
 import { useEffect } from 'react';
 const Login= (props) =>  {
   const { register, formState: { errors }, handleSubmit,setValue } = useForm();
   const dispatch = useDispatch()
   const onSubmit = (data) => {
-    dispatch(setUser(data))
+    dispatch(SetUser(data))
   };
   const formData=useSelector(state=>state.currentUser.user)
 console.log(formData)
 
 useEffect(()=>{
 setValue("firstName",formData.firstName)
-setValue("mail",formData.mail)
+setValue("password",formData.mail)
 },[])
   return (<div>
     <Header text="Register your detail here"/>
@@ -38,23 +38,23 @@ setValue("mail",formData.mail)
       {errors.lastname?.type === 'required' && <p role="alert">First name is required</p>}
       </div>
       <div>
-      <label for="mail">Email:</label>
+      <label for="password">Password:</label>
       <input 
-        {...register("mail", 
+        {...register("password", 
         { 
-          required: "Email Address is required",
+          required: "password is required",
          validate: {
           maxLength: (v) =>
             v.length <= 50 || "The email should have at most 50 characters",
           matchPattern: (v) =>
             /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-            "Email address must be a valid address",
+            "password must be a valided",
         },
        }
        )} 
-        aria-invalid={errors.mail ? "true" : "false"} 
+        aria-invalid={errors.password ? "true" : "false"} 
       />
-      {errors.mail && <p role="alert">{errors.mail?.message}</p>}
+      {errors.password && <p role="alert">{errors.password?.message}</p>}
       </div>
       <div>
       <label for="password">Password:</label>
