@@ -1,21 +1,25 @@
-  
-  form {
-    max-width: 500px;
-    margin: 0 auto;
+  .main{
+    margin: auto;
+    /* width: 50%; */
+    /* border: 3px solid rgb(238, 243, 238); */
+    /* padding: 10px; */
   }
   
   h1 {
     font-weight: 100;
     color: white;
     text-align: center;
+    justify-content: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgb(79, 98, 148);
+    /* border-bottom: 1px solid rgb(79, 98, 148); */
   }
   
   .form {
     background: #0e101c;
-    max-width: 400px;
-    margin: 0 auto;
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgb(237, 241, 237);
+    padding: 10px;
   }
   
   p {

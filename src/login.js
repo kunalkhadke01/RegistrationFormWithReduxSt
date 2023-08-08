@@ -1,4 +1,4 @@
-// import './login.css';
+import './login.css';
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from 'react-redux';
 import {SetUser} from './Redux/action'
@@ -15,9 +15,9 @@ const Login= (props) =>  {
   };
   const formData=useSelector(state=>console.log(state.currentUser))
 
-  return (<div>
+  return (<div className='main'>
         <Header text="Welcome to login page"/>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div>
       <label for="fname">User Name:</label>
       <input 

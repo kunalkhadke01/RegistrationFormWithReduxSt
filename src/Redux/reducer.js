@@ -1,4 +1,4 @@
-import {SET_USER,REGISTER_USER} from './action'
+import {SET_USER,REGISTER_USER,GET_USER} from './action'
 var initialState = [
     {
       userName: "kunal",
@@ -19,6 +19,11 @@ var initialState = [
             user: action.payload,
             loggedIn: true
           };
+          case GET_USER:
+            return{
+              ...state,
+              user:action.payload
+            }
       default:
         return state;
     }
