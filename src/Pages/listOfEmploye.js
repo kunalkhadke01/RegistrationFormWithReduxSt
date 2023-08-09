@@ -3,9 +3,8 @@ import axios from 'axios';
 import { getUserData } from '../Redux/action';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import './listOfEmp.css';
 
-
-import './listOfEmp.css'
 const ListOfEmploye = () => {
     const [userData, setUserData] = useState([])
     const videoRef = useRef(null)
@@ -37,10 +36,15 @@ const ListOfEmploye = () => {
     const takeApicture = () => {
         let picture = pictureRef.current
         let video =videoRef.current
+
         picture.width=100
         picture.height= 100
         let context = picture.getContext('2d')
+
         context.drawImage(video,0,0,picture.width, picture.height)
+        var img    = picture.toDataURL("image/png")
+        console.log(img)
+        setUserData(prevState => [...prevState, { name: img }])
     }
     const OnhandleClick = (data) => {
         console.log(data)
@@ -70,21 +74,23 @@ const ListOfEmploye = () => {
               
                 <h4>Image Container</h4>
                 
-                <ul>
+                <section style={{display:"flex", width:"300px"}}>
                     {userData.map((val, i) => {
                         return (
-                            <li onClick={() => OnhandleClick(val)}>
-                                <img src="" alt="" />
-                                <span class="employ">
+                            < section
+                            // onClick={() => OnhandleClick(val)}
+                            >
+                                <img src={val.name} alt="" />
+                                {/* <span class="employ">
                                     {val.name}
-                                </span>
-                            </li>
+                                </span> */}
+                            </section>
                         )
                     }
                     )
                     }
-                </ul>
-                <input type="file" accept='image/png' onChange={(e) => onUpload(e)} />
+                </section>
+                {/* <input type="file" accept='image/png' onChange={(e) => onUpload(e)} /> */}
             </div>
 
         </div>

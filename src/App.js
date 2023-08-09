@@ -13,6 +13,7 @@ import Post from './Pages/post';
 import Gallary from './Pages/gallary';
 import Todo from './Pages/todo';
 const store = createStore(allData)
+
 function App(props) {
   const routesConfig=useRoutes( [{
     path: '/', element: <Login />
