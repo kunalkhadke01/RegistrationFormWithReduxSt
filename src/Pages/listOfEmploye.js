@@ -43,7 +43,6 @@ const ListOfEmploye = () => {
 
         context.drawImage(video,0,0,picture.width, picture.height)
         var img    = picture.toDataURL("image/png")
-        console.log(img)
         setUserData(prevState => [...prevState, { name: img }])
     }
     const OnhandleClick = (data) => {
@@ -63,22 +62,19 @@ const ListOfEmploye = () => {
 
             <div className="card1">
                 <div className='videocontainer'>
-                <div>
                 <video id="vid" ref={videoRef} className="camStyle" ></video>
                 <button onClick={takeApicture} className='capturebutton'>Take Picture</button>
-                </div>
-                <div className='canvas'>
                 <canvas ref={pictureRef} ></canvas>
-                </div>
                 </div>
               
                 <h4>Image Container</h4>
                 
-                <section style={{display:"flex", width:"300px"}}>
+                <section style={{display:"flex"}} className='category'>
                     {userData.map((val, i) => {
                         return (
                             < section
                             // onClick={() => OnhandleClick(val)}
+                            className='item'
                             >
                                 <img src={val.name} alt="" />
                                 {/* <span class="employ">

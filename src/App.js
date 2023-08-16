@@ -31,6 +31,7 @@ function App(props) {
         { path: '/sidebar/todo', element: <Todo/> },
       ],
     },
+    { path: '/register', element: <Register/>}
   ]);
   return (
   <Provider store={store}>

@@ -8,19 +8,19 @@ const Login= (props) =>  {
   const { register, formState: { errors }, handleSubmit,setValue } = useForm();
   const dispatch = useDispatch()
   const onSubmit = (data) => {
-    dispatch(SetUser(data))
+    // dispatch(SetUser(data))
   };
-  const formData=useSelector(state=>state.currentUser.user)
-console.log(formData)
+//   const formData=useSelector(state=>state.currentUser.user)
+// console.log(formData)
 
-useEffect(()=>{
-setValue("firstName",formData.firstName)
-setValue("password",formData.mail)
-},[])
-  return (<div>
-    <Header text="Register your detail here"/>
+// useEffect(()=>{
+// setValue("firstName",formData.firstName)
+// setValue("password",formData.mail)
+// },[])
+  return (<div  className='main'>
+    <Header text="Register With us"/>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div>
       <label for="fname">First Name:</label>
       <input 
@@ -38,7 +38,7 @@ setValue("password",formData.mail)
       {errors.lastname?.type === 'required' && <p role="alert">First name is required</p>}
       </div>
       <div>
-      <label for="password">Password:</label>
+      <label for="password">Create Password:</label>
       <input 
         {...register("password", 
         { 
@@ -57,7 +57,7 @@ setValue("password",formData.mail)
       {errors.password && <p role="alert">{errors.password?.message}</p>}
       </div>
       <div>
-      <label for="password">Password:</label>
+      <label for="password">Confirm Password:</label>
       <input 
         {...register("password", 
         { 

@@ -45,6 +45,8 @@ const Login= (props) =>  {
       />
       {errors.password && <p role="alert">{errors.password?.message}</p>}
       </div>
+      <span>Forget password</span>/
+      <p onClick={()=> navigate('/register')}><span >New Registration</span></p>
       <input type="submit" />
     </form>
 </div>);
