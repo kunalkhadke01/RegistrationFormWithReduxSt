@@ -8,7 +8,8 @@ const Login= (props) =>  {
   const { register, formState: { errors }, handleSubmit,setValue } = useForm();
   const dispatch = useDispatch()
   const onSubmit = (data) => {
-    // dispatch(SetUser(data))
+    dispatch(SetUser(data))
+    console.log(data)
   };
 //   const formData=useSelector(state=>state.currentUser.user)
 // console.log(formData)
@@ -18,7 +19,7 @@ const Login= (props) =>  {
 // setValue("password",formData.mail)
 // },[])
   return (<div  className='main'>
-    <Header text="Register With us"/>
+    <Header text="Register your account"/>
 
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div>
@@ -42,13 +43,13 @@ const Login= (props) =>  {
       <input 
         {...register("password", 
         { 
-          required: "password is required",
+          required: "Password is required",
          validate: {
           maxLength: (v) =>
-            v.length <= 50 || "The email should have at most 50 characters",
+            v.length <= 10 || "Password should have at most 10 characters",
           matchPattern: (v) =>
-            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-            "password must be a valided",
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(v) ||
+          "At least one number, one lowercase and one uppercase letter is required",
         },
        }
        )} 
@@ -59,21 +60,17 @@ const Login= (props) =>  {
       <div>
       <label for="password">Confirm Password:</label>
       <input 
-        {...register("password", 
+        {...register("Confirm_password", 
         { 
-          required: "password is required",
+          required: "Password is required",
          validate: {
-          maxLength: (v) =>
-            v.length <= 50 || "The email should have at most 50 characters",
-          matchPattern: (v) =>
-            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-            "password must be a valid",
+          value:(v,form)=> form.password ==v || "Password must be same"
         },
        }
        )} 
-        aria-invalid={errors.password ? "true" : "false"} 
+        aria-invalid={errors.Confirm_password ? "true" : "false"} 
       />
-      {errors.password && <p role="alert">{errors.password?.message}</p>}
+      {errors.Confirm_password && <p role="alert">{errors.Confirm_password?.message}</p>}
       </div>
       <input type="submit" />
     </form>

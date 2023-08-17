@@ -21,10 +21,11 @@ const Login= (props) =>  {
       <div>
       <label for="fname">User Name:</label>
       <input 
+      type="text"
         {...register("firstName", { required: true })} 
         aria-invalid={errors.firstName ? "true" : "false"} 
       />
-      {errors.firstName?.type === 'required' && <p role="alert">First name is required</p>}
+      {errors.firstName?.type === 'required' && <p role="alert">User name is required</p>}
       </div>
       <div>
       <label for="password">Password:</label>
@@ -32,13 +33,13 @@ const Login= (props) =>  {
         {...register("password", 
         { 
           required: "Password is required",
-        //  validate: {
-        //   maxLength: (v) =>
-        //     v.length <= 50 || "Password should have at most 50 characters",
-        //   matchPattern: (v) =>
-        //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/.test(v) ||
-        //     "It must be a valid password",
-        // },
+         validate: {
+          maxLength: (v) =>
+            v.length <= 10 || "Password should have at most 10 characters",
+          matchPattern: (v) =>
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(v) ||
+            "at least one number, one lowercase and one uppercase letter is required",
+        },
        }
        )} 
         aria-invalid={errors.password ? "true" : "false"} 
